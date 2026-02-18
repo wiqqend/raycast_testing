@@ -10,7 +10,16 @@ const map = [
   [1,0,0,0,0,0,0,1],
   [1,0,1,0,1,0,0,1],
   [1,0,0,0,0,0,0,1],
+  [1,1,1,0,0,1,1,1], 
+  [1,0,0,0,0,0,0,1],
+  [1,0,1,0,1,0,0,1],
+  [1,0,0,0,0,0,0,1],
+  [1,1,1,0,0,1,1,1],
   [1,1,1,1,1,1,1,1]
+
+
+
+
 ];
 
 const player = { x: 100, y: 100, a: 0, hp: 100 };
@@ -27,6 +36,8 @@ document.addEventListener("mousemove", e => {
 
 const wallTex = new Image();
 wallTex.src = "assets/wall.png";
+const floorTex = new Image();
+floorTex.src = "assets/floor.png";
 
 const engine = new Raycaster(ctx, map, 64);
 
@@ -46,7 +57,7 @@ function loop() {
   ctx.fillRect(0,100,320,100);
 
   update();
-  engine.render(player, wallTex);
+  engine.render(player, wallTex, floorTex);
 
   requestAnimationFrame(loop);
 }
